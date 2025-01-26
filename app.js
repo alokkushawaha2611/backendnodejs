@@ -14,4 +14,19 @@ app.use("/dashboard",(req,res)=>{
     res.send("dashboard ")
    
 })
-app.listen("3000")
+
+app.get("/user/:id",(req,res,next)=>{
+    console.log("hello users")
+    next()
+    // res.send("hello")
+},(req,res,next)=>{
+    console.log("hello users")
+    next()
+    // res.send("hello1")
+},(req,res,next)=>{
+    console.log("hello users")
+    next()
+    res.send(req.params.id)
+    // res.send("hello2")
+})
+app.listen("3000",()=>console.log("listning to port 3000"))
