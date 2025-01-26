@@ -1,32 +1,23 @@
 const express = require('express');
 
 app = express()
+const {adminAuth} = require('./middlewares/auth.js')
 
+app.use("/admin",adminAuth) 
 
-app.use("/home",(req,res)=>{
-    console.log("listning 3000")
-    res.send("hellooo ")
-   
+app.get("/admin/getAllData",(req,res,next)=>{
+    res.send("all user data send")
 })
 
-app.use("/dashboard",(req,res)=>{
-    console.log("listning 3000")
-    res.send("dashboard ")
-   
+
+app.delete("/admin/deleteAllData",(req,res,next)=>{
+    res.send("all user data deleted")
 })
 
-app.get("/user/:id",(req,res,next)=>{
-    console.log("hello users")
-    next()
-    // res.send("hello")
-},(req,res,next)=>{
-    console.log("hello users")
-    next()
-    // res.send("hello1")
-},(req,res,next)=>{
-    console.log("hello users")
-    next()
-    res.send(req.params.id)
-    // res.send("hello2")
+
+app.post("/admin/getAllData",(req,res,next)=>{
+    res.send("data added")
 })
+
+
 app.listen("3000",()=>console.log("listning to port 3000"))
