@@ -20,4 +20,13 @@ app.post("/admin/getAllData",(req,res,next)=>{
 })
 
 
+app.use('/',(error , req,res,next)=>{
+    if(error){
+        res.status(500).send("something went wrong")
+    }else(
+        next()
+    )
+})
+
+
 app.listen("3000",()=>console.log("listning to port 3000"))
